@@ -1,424 +1,306 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ABID GENERAL STORE — Cosmetics & General Store Bahawalpur</title>
-    <meta name="description" content="ABID General Store — Cosmetics, personal care, and household items at Mela Bazar Hamitian, Bahawalpur. Contact: 0300-6831570.">
-    <meta name="theme-color" content="#f6f6f6">
-    <link rel="icon" href="favicon.ico">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <!-- LocalBusiness structured data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Store",
-      "name": "ABID GENERAL STORE",
-      "image": "",
-      "telephone": "+923006831570",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Mela Bazar Hamitian",
-        "addressLocality": "Bahawalpur",
-        "postalCode": "63100",
-        "addressCountry": "PK"
-      },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
-          ],
-          "opens": "09:00",
-          "closes": "22:00"
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abid General Store - Online Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #195830; /* Logo ka Dark Green Color match kiya hai */
+            --secondary: #0f3d20;
+            --bg: #f5f5f5;
+            --white: #ffffff;
         }
-      ],
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 29.3817981,
-        "longitude": 69.2795861
-      },
-      "sameAs": [
-        "https://wa.me/923006831570"
-      ]
-    }
-    </script>
+        * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { margin: 0; padding: 0; background-color: var(--bg); }
+
+        /* HEADER SECTION */
+        header { background-color: var(--white); color: var(--secondary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        
+        .top-bar { padding: 8px 20px; font-size: 12px; background: var(--secondary); color: white; display: flex; justify-content: space-between; }
+        
+        .header-main { padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+        
+        /* LOGO SETTINGS */
+        .logo { text-decoration: none; display: flex; align-items: center; }
+        .logo img { 
+            height: 70px; /* Logo ki unchai set ki hai */
+            width: auto; 
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        /* Search Bar */
+        .search-box { flex-grow: 1; margin: 10px 20px; display: flex; max-width: 600px; }
+        .search-box input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px 0 0 4px; outline: none; background: #f9f9f9; }
+        .search-box button { background-color: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 0 4px 4px 0; cursor: pointer; }
+
+        /* NAVIGATION BREADCRUMB */
+        .breadcrumb { padding: 15px 20px; background: white; border-bottom: 1px solid #ddd; font-size: 14px; color: #555; display: flex; align-items: center; }
+        .back-btn { background: none; border: 1px solid #ddd; padding: 5px 10px; margin-right: 15px; cursor: pointer; border-radius: 4px; display: none; }
+        .back-btn:hover { background: #eee; }
+
+        /* GRID LAYOUT */
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+
+        /* CATEGORY CARD DESIGN */
+        .cat-card { background: white; padding: 20px; border-radius: 8px; text-align: center; cursor: pointer; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 160px; }
+        .cat-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: var(--primary); }
+        .cat-icon { font-size: 40px; color: var(--primary); margin-bottom: 15px; }
+        .cat-title { font-weight: 600; color: #333; font-size: 14px; }
+
+        /* PRODUCT CARD DESIGN */
+        .product-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.3s; display: flex; flex-direction: column; }
+        .product-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
+        .p-img { width: 100%; height: 180px; background: #eee; object-fit: cover; }
+        .p-details { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .p-name { font-size: 14px; margin: 0 0 5px; color: #333; line-height: 1.4; height: 40px; overflow: hidden; }
+        .p-brand { font-size: 12px; color: #888; margin-bottom: 5px; }
+        .p-price { color: var(--primary); font-size: 16px; font-weight: bold; }
+        
+        .whatsapp-btn { background-color: #25D366; color: white; border: none; width: 100%; padding: 10px; margin-top: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .whatsapp-btn:hover { background-color: #1ebc57; }
+
+        .section-title { margin-bottom: 20px; font-size: 18px; border-left: 4px solid var(--primary); padding-left: 10px; color: #333; }
+        footer { background: var(--secondary); color: #fff; padding: 40px 20px; text-align: center; margin-top: 50px; }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .cat-card { height: 130px; padding: 10px; }
+            .cat-icon { font-size: 30px; }
+            .p-img { height: 150px; }
+            .search-box { margin: 10px 0; order: 3; width: 100%; }
+            .header-main { flex-direction: column; align-items: stretch; }
+            .logo { justify-content: center; margin-bottom: 5px; }
+            .logo img { height: 60px; } /* Mobile pe thoda chota logo */
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="site-header" role="banner">
-        <div class="container header-grid">
-            <div class="brand">
-                <h1 aria-label="ABID General Store">🏪 ABID GENERAL STORE</h1>
-                <p class="tagline">Your Trusted Cosmetics & General Store</p>
-            </div>
-            <div class="header-contacts" aria-label="Contact">
-                <a class="btn whatsapp" href="https://wa.me/923006831570" target="_blank" rel="noopener" aria-label="Send WhatsApp message to 0300-6831570">
-                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                    <span class="visually-hidden">WhatsApp:</span> 0300-6831570
-                </a>
-                <a class="btn phone" href="tel:+923006831570" aria-label="Call 0300-6831570">
-                    <i class="fas fa-phone" aria-hidden="true"></i>
-                </a>
+
+    <header>
+        <div class="top-bar">
+            <span>📍 Bahawalpur, Pakistan</span>
+            <span>📞 0300 6831570</span>
+        </div>
+        <div class="header-main">
+            <!-- Yahan LOGO Lagaya hai -->
+            <a href="#" class="logo" onclick="goHome()">
+                <img src="logo.jpg" alt="Abid General Store Logo">
+            </a>
+            
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search (e.g. Lipstick, Pampers)...">
+                <button onclick="searchProduct()"><i class="fas fa-search"></i></button>
             </div>
         </div>
     </header>
 
-    <!-- Navigation -->
-    <nav class="main-nav" role="navigation" aria-label="Primary">
-        <div class="container">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#location">Location</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <div class="breadcrumb">
+        <button class="back-btn" id="backBtn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Back</button>
+        <span id="crumbText">Home</span>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title" id="pageTitle">Browse Categories</h2>
+        <div class="grid" id="mainGrid">
+            <!-- Content loads here -->
         </div>
-    </nav>
+    </div>
 
-    <!-- Hero -->
-    <main>
-        <section id="home" class="hero">
-            <div class="container hero-inner">
-                <div class="hero-text">
-                    <h2>Welcome to ABID GENERAL STORE</h2>
-                    <h3>📍 Mela Bazar Hamitian, Bahawalpur</h3>
-                    <p class="lead">Complete range of cosmetics, personal care & household items — genuine products, best prices, quality assured.</p>
-                    <div class="features">
-                        <span>✅ Genuine Products</span>
-                        <span>✅ Best Prices</span>
-                        <span>✅ Quality Assured</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Products -->
-        <section id="products" class="products" aria-labelledby="products-heading">
-            <div class="container">
-                <h2 id="products-heading">Our Products</h2>
-
-                <article class="category">
-                    <h3>✨ Whitening / Skincare</h3>
-                    <div class="product-grid">
-                        <div class="product-card" aria-hidden="false">
-                            <i class="fas fa-spa" aria-hidden="true"></i>
-                            <h4>Face Creams</h4>
-                            <ul>
-                                <li>Fair & Lovely / Glow & Lovely</li>
-                                <li>Golden Pearl</li>
-                                <li>Ponds White Beauty</li>
-                                <li>Nivea Cream</li>
-                                <li>Dove Cream</li>
-                            </ul>
-                        </div>
-                        <div class="product-card">
-                            <i class="fas fa-sun" aria-hidden="true"></i>
-                            <h4>Face Care</h4>
-                            <ul>
-                                <li>Derma Shine Facewash</li>
-                                <li>Sunscreen Lotions</li>
-                                <li>Face Powders</li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="category">
-                    <h3>🛁 Bath & Body Care</h3>
-                    <div class="product-grid">
-                        <div class="product-card">
-                            <i class="fas fa-soap" aria-hidden="true"></i>
-                            <h4>Soaps</h4>
-                            <ul>
-                                <li>Lux</li>
-                                <li>Dove</li>
-                                <li>Safeguard</li>
-                                <li>Dettol</li>
-                                <li>Lifebuoy</li>
-                                <li>Johnson Baby Soap</li>
-                            </ul>
-                        </div>
-                        <div class="product-card">
-                            <i class="fas fa-shower" aria-hidden="true"></i>
-                            <h4>Body Wash</h4>
-                            <ul>
-                                <li>Pears</li>
-                                <li>Fa</li>
-                                <li>Nivea</li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="category">
-                    <h3>💇 Hair Care</h3>
-                    <div class="product-grid">
-                        <div class="product-card">
-                            <i class="fas fa-bottle-droplet" aria-hidden="true"></i>
-                            <h4>Shampoos</h4>
-                            <ul>
-                                <li>Sunsilk</li>
-                                <li>Head & Shoulders</li>
-                                <li>Pantene</li>
-                                <li>Dove Shampoo</li>
-                            </ul>
-                        </div>
-                        <div class="product-card">
-                            <i class="fas fa-oil-can" aria-hidden="true"></i>
-                            <h4>Hair Oils & Colors</h4>
-                            <ul>
-                                <li>Vatika Oil</li>
-                                <li>Parachute Oil</li>
-                                <li>Hair Colors</li>
-                                <li>Hairsprays</li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="category">
-                    <h3>🏠 Household Items</h3>
-                    <div class="product-grid">
-                        <div class="product-card">
-                            <i class="fas fa-jug-detergent" aria-hidden="true"></i>
-                            <h4>Detergents</h4>
-                            <ul>
-                                <li>Surf Excel</li>
-                                <li>Ariel</li>
-                                <li>Bright</li>
-                                <li>Rin</li>
-                                <li>Bleach Powder</li>
-                            </ul>
-                        </div>
-                        <div class="product-card">
-                            <i class="fas fa-spray-can" aria-hidden="true"></i>
-                            <h4>Cleaning & Others</h4>
-                            <ul>
-                                <li>Dishwash Liquids</li>
-                                <li>Sponges</li>
-                                <li>Garbage Bags</li>
-                                <li>Tissues</li>
-                                <li>Room Sprays</li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="category">
-                    <h3>👶 Baby Care & More</h3>
-                    <div class="product-grid">
-                        <div class="product-card">
-                            <i class="fas fa-baby" aria-hidden="true"></i>
-                            <h4>Baby Products</h4>
-                            <ul>
-                                <li>Diapers</li>
-                                <li>Baby Care Items</li>
-                                <li>Baby Soaps</li>
-                            </ul>
-                        </div>
-                        <div class="product-card">
-                            <i class="fas fa-gem" aria-hidden="true"></i>
-                            <h4>Beauty & Others</h4>
-                            <ul>
-                                <li>Makeup Items</li>
-                                <li>Jewelry</li>
-                                <li>Perfumes</li>
-                                <li>Sanitary Pads</li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- Location -->
-        <section id="location" class="location" aria-labelledby="location-heading">
-            <div class="container">
-                <h2 id="location-heading">📍 Store Location</h2>
-                <div class="address-info">
-                    <h3>ABID GENERAL STORE</h3>
-                    <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Mela Bazar Hamitian, Bahawalpur</p>
-                    <p><i class="fas fa-envelope" aria-hidden="true"></i> Postal Code: 63100</p>
-                    <p><i class="fas fa-city" aria-hidden="true"></i> Bahawalpur GPO</p>
-                    <p><a href="https://www.google.com/maps/search/?api=1&query=Abid+General+Store+Bahawalpur" target="_blank" rel="noopener">Open in Google Maps</a></p>
-                </div>
-                <div class="map-container" role="region" aria-label="Map showing ABID General Store">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1780022.7166999278!2d69.27958605624998!3d29.38179810000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b915262aabb49%3A0x87217d3f1e481bc5!2sAbid%20General%20Store!5e0!3m2!1sen!2s!4v1765449315727!5m2!1sen!2s"
-                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-hidden="false"></iframe>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="contact" aria-labelledby="contact-heading">
-            <div class="container">
-                <h2 id="contact-heading">Contact Us</h2>
-                <div class="contact-grid">
-                    <a href="https://wa.me/923006831570" class="contact-card whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp 0300-6831570">
-                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                        <h3>WhatsApp</h3>
-                        <p>0300-6831570</p>
-                    </a>
-                    <a href="tel:+923006831570" class="contact-card phone" aria-label="Call 0300-6831570">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
-                        <h3>Call Us</h3>
-                        <p>0300-6831570</p>
-                    </a>
-                    <div class="contact-card timing" role="note">
-                        <i class="fas fa-clock" aria-hidden="true"></i>
-                        <h3>Store Timings</h3>
-                        <p>9:00 AM - 10:00 PM</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="site-footer" role="contentinfo">
-        <div class="container">
-            <p>&copy; 2024 ABID GENERAL STORE — All Rights Reserved</p>
-            <p>Mela Bazar Hamitian, Bahawalpur | Contact: 0300-6831570</p>
-        </div>
+    <footer>
+        <p><strong>Abid General Store</strong></p>
+        <p>Retail Sector, Mela Bazar, Basti Hamaitian Mohajir Colony, Gli No 1, Bahawalpur</p>
+        <p>Order on WhatsApp: 0300 6831570</p>
     </footer>
 
-    <style>
-    /* Visually-hidden utility for screen readers */
-    .visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
-    </style>
+    <script>
+        const storeData = {
+            "Makeup": {
+                icon: "fa-palette",
+                subcategories: {
+                    "Face Makeup": ["Foundation", "Concealer", "Compact Powder", "Loose Powder", "Blush", "Highlighter", "Contour", "BB Cream", "CC Cream", "Primer", "Setting Spray"],
+                    "Eye Makeup": ["Eyeliner", "Mascara", "Eyeshadow", "Eyebrow Pencil", "Eyebrow Gel", "Kajal", "Fake Lashes"],
+                    "Lip Makeup": ["Lipstick", "Lip Gloss", "Lip Balm", "Lip Liner", "Liquid Lipstick"],
+                    "Makeup Tools": ["Makeup Brushes", "Beauty Blender", "Eyelash Curler", "Makeup Remover Wipes"]
+                }
+            },
+            "Baby Care": {
+                icon: "fa-baby",
+                items: ["Baby Shampoo", "Baby Soap", "Bath Oil", "Baby Powder", "Baby Lotion", "Baby Kits", "Pampers", "Baby Wipes", "Diaper Liner", "Feeder", "Pacifier"]
+            },
+            "Skincare & Body": {
+                icon: "fa-spa",
+                subcategories: {
+                    "Face Care": ["Moisturizer", "Face Wash", "Sunscreen", "Face Serum", "Face Mask", "Toner", "Night Cream", "Eye Cream"],
+                    "Body Care": ["Body Lotion", "Body Butter", "Body Scrub"],
+                    "Nail Care": ["Nail Polish", "Base Coat", "Top Coat", "Nail Remover", "Cuticle Cream"],
+                    "Tools": ["Cotton Pads", "Tweezers", "Nail File", "Nail Buffer"]
+                }
+            },
+            "Fragrances": {
+                icon: "fa-spray-can",
+                items: ["Men Perfume", "Women Perfume", "Body Spray", "Attar", "Deodorant", "Air Freshener"]
+            },
+            "Personal & Adult Care": {
+                icon: "fa-pump-soap",
+                items: ["Adult Shampoo", "Beauty Soap", "Hair Oil", "Conditioner", "Hair Color", "Face Wash", "Lotion", "Wax Strips", "Hair Removal Cream", "Condoms", "Personal Hygiene"]
+            },
+            "Jewellery & Accessories": {
+                icon: "fa-gem",
+                items: ["Necklace", "Earrings", "Rings", "Bracelets", "Hair Clips", "Hair Bands"]
+            }
+        };
+
+        const brands = ["L'Oreal", "Maybelline", "Huda Beauty", "Dove", "Ponds", "Nivea", "Johnson's", "Local Best"];
+        let historyStack = [];
+        const mainGrid = document.getElementById('mainGrid');
+        const pageTitle = document.getElementById('pageTitle');
+        const crumbText = document.getElementById('crumbText');
+        const backBtn = document.getElementById('backBtn');
+        const shopPhone = "923006831570";
+
+        function renderHome() {
+            mainGrid.innerHTML = "";
+            pageTitle.innerText = "Browse Categories";
+            crumbText.innerText = "Home";
+            backBtn.style.display = "none";
+            historyStack = [];
+
+            for (let cat in storeData) {
+                let div = document.createElement('div');
+                div.className = 'cat-card';
+                div.innerHTML = `
+                    <i class="fas ${storeData[cat].icon} cat-icon"></i>
+                    <div class="cat-title">${cat}</div>
+                `;
+                div.onclick = () => openCategory(cat);
+                mainGrid.appendChild(div);
+            }
+        }
+
+        function openCategory(categoryName) {
+            historyStack.push({ view: 'home' });
+            updateUIState(categoryName);
+            mainGrid.innerHTML = "";
+            let data = storeData[categoryName];
+
+            if (data.subcategories) {
+                for (let sub in data.subcategories) {
+                    let items = data.subcategories[sub];
+                    items.forEach(item => {
+                        createItemCard(item, sub);
+                    });
+                }
+            } else {
+                data.items.forEach(item => {
+                    createItemCard(item, categoryName);
+                });
+            }
+        }
+
+        function createItemCard(itemName, groupName) {
+            let div = document.createElement('div');
+            div.className = 'cat-card';
+            div.style.height = "120px";
+            div.innerHTML = `
+                <div class="cat-title" style="font-size:16px;">${itemName}</div>
+                <div style="font-size:12px; color:#888; margin-top:5px;">${groupName}</div>
+            `;
+            div.onclick = () => showProducts(itemName);
+            mainGrid.appendChild(div);
+        }
+
+        function showProducts(itemName) {
+            historyStack.push({ view: 'category', name: crumbText.innerText });
+            updateUIState(itemName);
+            mainGrid.innerHTML = "";
+            let numProducts = Math.floor(Math.random() * 4) + 3; 
+            
+            for(let i=0; i<numProducts; i++) {
+                let brand = brands[Math.floor(Math.random() * brands.length)];
+                let price = (Math.floor(Math.random() * 20) + 5) * 50; 
+                let colors = ['195830', '0f3d20', '25D366']; // Green shades
+                let color = colors[i % colors.length];
+
+                let productDiv = document.createElement('div');
+                productDiv.className = 'product-card';
+                productDiv.innerHTML = `
+                    <img src="https://placehold.co/300x300/${color}/white?text=${itemName}" class="p-img" alt="${itemName}">
+                    <div class="p-details">
+                        <div>
+                            <div class="p-brand">${brand}</div>
+                            <h3 class="p-name">${brand} ${itemName} (Original)</h3>
+                            <div class="p-price">Rs. ${price}</div>
+                        </div>
+                        <button class="whatsapp-btn" onclick="orderWhatsApp('${brand} ${itemName}', ${price})">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </button>
+                    </div>
+                `;
+                mainGrid.appendChild(productDiv);
+            }
+        }
+
+        function orderWhatsApp(product, price) {
+            let msg = `Assalam-o-Alaikum, I want to order from Abid General Store:\n\n*Product:* ${product}\n*Price:* Rs. ${price}\n\nPlease confirm availability.`;
+            let url = `https://wa.me/${shopPhone}?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        }
+
+        function updateUIState(text) {
+            backBtn.style.display = "inline-block";
+            crumbText.innerText = text;
+            pageTitle.innerText = text;
+            window.scrollTo(0,0);
+        }
+
+        function goBack() {
+            if(historyStack.length === 0) return;
+            historyStack.pop();
+            renderHome();
+        }
+
+        function goHome() {
+            renderHome();
+        }
+        
+        function searchProduct() {
+            let query = document.getElementById('searchInput').value.toLowerCase();
+            if(query.length < 2) return alert("Please enter at least 2 characters");
+            
+            historyStack.push({ view: 'home' });
+            updateUIState(`Search: "${query}"`);
+            mainGrid.innerHTML = "";
+            
+            let found = false;
+            for (let cat in storeData) {
+                let data = storeData[cat];
+                let allItems = [];
+                if(data.subcategories) {
+                    for(let sub in data.subcategories) allItems = allItems.concat(data.subcategories[sub]);
+                } else {
+                    allItems = data.items;
+                }
+                
+                allItems.forEach(item => {
+                    if(item.toLowerCase().includes(query)) {
+                        createItemCard(item, cat);
+                        found = true;
+                    }
+                });
+            }
+
+            if(!found) {
+                mainGrid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:40px;">No products found for "${query}"</div>`;
+            }
+        }
+
+        renderHome();
+    </script>
 </body>
 </html>
-/* Basic reset & variables */
-:root{
-  --bg:#ffffff;
-  --accent:#1f8f3e;
-  --muted:#666;
-  --card:#f8f8f8;
-  --container:1200px;
-  --radius:10px;
-  --gap:16px;
-}
-
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  background:var(--bg);
-  color:#222;
-  direction:rtl; /* ensure RTL layout for Urdu */
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height:1.45;
-}
-
-/* Container */
-.container{
-  max-width:var(--container);
-  margin:0 auto;
-  padding:0 16px;
-}
-
-/* Header */
-.site-header{
-  background:linear-gradient(90deg,#fff 0%, #fbfbfb 100%);
-  border-bottom:1px solid #eee;
-  padding:14px 0;
-}
-.header-grid{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
-.brand h1{margin:0;font-size:1.25rem}
-.tagline{margin:4px 0 0;color:var(--muted);font-size:0.95rem}
-
-.header-contacts{display:flex;gap:8px;align-items:center}
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  text-decoration:none;
-  padding:8px 12px;
-  border-radius:8px;
-  background:var(--card);
-  color:#111;
-  border:1px solid #e6e6e6;
-  font-weight:600;
-}
-.btn.whatsapp{background:#dcfce7;color:#075e40;border-color:#d1f6d9}
-.btn.phone{background:#fff;color:#0b5132}
-
-/* Navigation */
-.main-nav{background:#fff;border-bottom:1px solid #eee}
-.main-nav ul{list-style:none;margin:0;padding:8px 0;display:flex;gap:16px;justify-content:flex-end}
-.main-nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:6px}
-.main-nav a:hover{background:#f3f3f3;color:#000}
-
-/* Hero */
-.hero{padding:28px 0;background:linear-gradient(180deg,#fff 0%, #fbfbfb 100%)}
-.hero-inner{display:flex;align-items:center;justify-content:space-between}
-.hero-text h2{margin:0 0 4px}
-.lead{color:var(--muted);margin:8px 0}
-.features{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-
-/* Products */
-.products{padding:28px 0}
-.category{margin-bottom:20px}
-.product-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-.product-card{
-  background:var(--card);
-  padding:14px;
-  border-radius:var(--radius);
-  border:1px solid #eee;
-}
-.product-card i{font-size:1.25rem;margin-bottom:6px;color:var(--accent)}
-.product-card h4{margin:0 0 8px}
-
-/* Location & Map */
-.location{padding:24px 0}
-.address-info h3{margin:0}
-.map-container{margin-top:12px;border-radius:8px;overflow:hidden;border:1px solid #eee}
-
-/* Contact grid */
-.contact{padding:24px 0}
-.contact-grid{display:flex;gap:12px;flex-wrap:wrap}
-.contact-card{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:8px;
-  background:var(--card);
-  padding:12px;
-  border-radius:8px;
-  text-decoration:none;
-  color:inherit;
-  width:100%;
-  max-width:300px;
-}
-.contact-card i{font-size:1.4rem}
-.contact-card h3{margin:0;font-size:1rem}
-
-/* Footer */
-.site-footer{border-top:1px solid #eee;padding:18px 0;text-align:center;color:var(--muted)}
-
-/* Responsive */
-@media (max-width:900px){
-  .hero-inner{flex-direction:column;align-items:flex-start}
-  .product-grid{grid-template-columns:1fr}
-  .header-grid{flex-direction:column;align-items:flex-start;gap:8px}
-  .main-nav ul{justify-content:flex-start;overflow:auto}
-  .contact-grid{justify-content:flex-start}
-}
-
-/* Accessibility focus outlines */
-a:focus, button:focus {outline:3px solid #bde7c9; outline-offset:3px}
